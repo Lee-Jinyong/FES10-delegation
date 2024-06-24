@@ -25,20 +25,38 @@ const data = [
 ]
 
 
+// 이벤트 위임 X
+// $('.navigation > li').click(function(e) {
+
+//   e.preventDefault();
+
+//   const index = $(this).index();
+
+//   $('.navigation > li').removeClass('is-active');
+
+//   $(this).addClass('is-active');
+
+//   $('.visual img').attr({
+//     'src': `./assets/part01/${data[index].src}`,
+//     'alt': data[index].alt
+//   });
+
+// })
 
 
+// 이벤트 위임 O
+$('.navigation').on('click', 'li', function(e) {
+  e.preventDefault();
 
+  const index = $(this).attr('data-index');
 
+  $('.navigation > li').removeClass('is-active');
 
+  $(this).addClass('is-active');
 
+  $('.visual img').attr({
+    'src': `./assets/part01/${data[index-1].src}`,
+    'alt': data[index-1].alt
+  });
 
-
-
-
-
-
-
-
-
-
-
+})
