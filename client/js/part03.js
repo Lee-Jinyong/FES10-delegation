@@ -21,11 +21,25 @@ const data = [
   },
 ];
 
-
-
-
-
-
-
-
-
+new Swiper('.swiper', {
+  autoplay: {
+    delay: 3000 // 슬라이드 속도
+  },
+  loop: true, // 반복
+  speed: 2000, // 애니메이션 속도
+  parallax: true, // 애니메이션 시차
+  pagination: { // 페이지네이션
+    el: '.pagination',
+    clickable: true, // 클릭 가능 여부
+    bulletClass: 'bullet', // 클래스 이름 편집
+    bulletActiveClass: 'is-active',
+    renderBullet: function(index, className) {
+      return `
+        <span class="${className}">
+          <img src="./assets/part01/${data[index].src}" alt"${data[index].alt}" />
+        </span>
+      `
+    }
+    // type: 'fraction' // 페이지네이션 타입
+  }
+})
